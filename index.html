@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayara Carpanezi | Private Law</title>
+    <meta name="description" content="Advocacia Especializada em Proteção Patrimonial e Família. Estratégia, Discrição e Resultados.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Manrope:wght@200;300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        void: '#0F0F0F',
+                        paper: '#161616',
+                        gold: {
+                            light: '#F3E5D0', /* Champagne light */
+                            base: '#D4AF37',  /* Classic gold */
+                            rich: '#C6A87C',  /* Muted sophisticated gold */
+                            dark: '#8E7550',
+                        },
+                        subtle: '#A3A3A3',
+                    },
+                    fontFamily: {
+                        display: ['"Cinzel"', 'serif'],
+                        body: ['"Manrope"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.04%22/%3E%3C/svg%3E')",
+                    },
+                    keyframes: {
+                        'fade-up': {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        'shimmer': {
+                            '0%': { backgroundPosition: '200% center' },
+                            '100%': { backgroundPosition: '-200% center' },
+                        }
+                    },
+                    animation: {
+                        'fade-up': 'fade-up 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
+                        'shimmer': 'shimmer 8s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- React & Babel for Single File Support -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            background-color: #0F0F0F;
+            color: #F3E5D0;
+        }
+        .text-gradient-gold {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .arch-mask {
+            border-radius: 300px 300px 0 0;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // --- ICONS (SVG Components) ---
+        const IconMenu = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+        );
+        const IconX = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M18 6 6 18"/><path d="M6 6 18 18"/></svg>
+        );
+        const IconArrowRight = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        );
+        const IconPlay = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none" className={className}><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        );
+        const IconMapPin = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        );
+        const IconPlus = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+        );
+
+        // --- HOOKS ---
+        const useIntersectionObserver = (options = { threshold: 0.1, rootMargin: '0px' }) => {
+            const elementRef = useRef(null);
+            const [isVisible, setIsVisible] = useState(false);
+
+            useEffect(() => {
+                const observer = new IntersectionObserver(([entry]) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible(true);
+                        if (elementRef.current) {
+                            observer.unobserve(elementRef.current);
+                        }
+                    }
+                }, options);
+
+                if (elementRef.current) {
+                    observer.observe(elementRef.current);
+                }
+
+                return () => {
+                    if (elementRef.current) {
+                        observer.unobserve(elementRef.current);
+                    }
+                };
+            }, [options]);
+
+            return { elementRef, isVisible };
+        };
+
+        // --- COMPONENTS ---
+
+        const Navbar = () => {
+            const [isScrolled, setIsScrolled] = useState(false);
+            const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => {
+                    setIsScrolled(window.scrollY > 50);
+                };
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const navClasses = `fixed top-0 w-full z-50 transition-all duration-700 ${
+                isScrolled 
+                ? 'bg-void/80 backdrop-blur-md py-4 shadow-lg shadow-black/10' 
+                : 'py-8 bg-transparent'
+            }`;
+
+            return (
+                <React.Fragment>
+                <nav className={navClasses}>
+                    <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
+                    <div className="flex items-center gap-4">
+                        <a href="#" className="font-display text-xl tracking-[0.2em] font-medium text-gold-light hover:text-white transition-colors">
+                        CARPANEZI.
+                        </a>
+                    </div>
+
+                    <div className="hidden md:flex items-center space-x-12 font-body text-[11px] font-medium tracking-[0.25em] uppercase text-gold-light/70">
+                        <a href="#expertise" className="hover:text-white transition-colors duration-300 relative group">
+                        Atuação
+                        <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-rich transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#protocolo" className="hover:text-white transition-colors duration-300 relative group">
+                        Método
+                        <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-rich transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#legado" className="hover:text-white transition-colors duration-300 relative group">
+                        Sobre
+                        <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-rich transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </div>
+
+                    <a 
+                        href="https://wa.me/5511980289632" 
+                        className="hidden md:block border border-gold-rich/30 px-8 py-3 rounded-full font-body text-[10px] uppercase tracking-[0.25em] text-gold-rich hover:bg-gold-rich hover:text-void transition-all duration-500 hover:scale-105"
+                    >
+                        Contato Privado
+                    </a>
+
+                    <button 
+                        className="md:hidden text-gold-rich"
+                        onClick={() => setIsMobileMenuOpen(true)}
+                    >
+                        <IconMenu size={24} />
+                    </button>
+                    </div>
+                </nav>
+
+                <div 
+                    className={`fixed inset-0 bg-void/95 backdrop-blur-xl z-[60] flex flex-col items-center justify-center space-y-10 transition-all duration-500 ${
+                    isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                    }`}
+                >
+                    <button 
+                    className="absolute top-8 right-8 text-gold-rich"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                    <IconX size={32} />
+                    </button>
+
+                    <a href="#expertise" onClick={() => setIsMobileMenuOpen(false)} className="font-display text-3xl text-gold-light">Atuação</a>
+                    <a href="#protocolo" onClick={() => setIsMobileMenuOpen(false)} className="font-display text-3xl text-gold-light">Método</a>
+                    <a href="#legado" onClick={() => setIsMobileMenuOpen(false)} className="font-display text-3xl text-gold-light">Sobre</a>
+                    
+                    <a 
+                    href="https://wa.me/5511980289632" 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="font-body text-void bg-gold-rich px-10 py-4 rounded-full uppercase tracking-widest text-xs mt-8"
+                    >
+                    Agendar
+                    </a>
+                </div>
+                </React.Fragment>
+            );
+        };
+
+        const Hero = () => {
+            const { elementRef, isVisible } = useIntersectionObserver();
+
+            return (
+                <header className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-void">
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gold-rich/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/2 mix-blend-screen"></div>
+                    <div className="absolute top-0 left-0 w-full h-full bg-noise opacity-50 pointer-events-none"></div>
+
+                    <div className="container mx-auto px-6 md:px-12 relative z-10">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                            
+                            <div 
+                                ref={elementRef}
+                                className={`lg:col-span-7 flex flex-col justify-center transition-all duration-1000 ${
+                                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                                }`}
+                            >
+                                <div className="mb-8 flex items-center">
+                                    <div className="inline-flex items-center gap-3 px-5 py-2 bg-gold-rich/5 border border-gold-rich/20 rounded-full backdrop-blur-sm">
+                                        <span className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-rich opacity-50"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-gold-rich"></span>
+                                        </span>
+                                        <span className="font-body text-[10px] uppercase tracking-[0.2em] text-gold-rich/90">
+                                            Agenda: <span className="text-gold-light font-medium">3 Vagas Dezembro</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.15] text-gold-light mb-10 font-normal">
+                                    Protegemos seu <br />
+                                    <span className="italic text-gradient-gold animate-shimmer">Legado</span> e seu <br />
+                                    Futuro.
+                                </h1>
+                                
+                                <div className={`h-px bg-gradient-to-r from-gold-rich/60 to-transparent mb-10 transition-all duration-[2000ms] delay-500 ease-out ${isVisible ? 'w-full' : 'w-0'}`}></div>
+                                
+                                <p className="font-body text-subtle font-light text-lg md:text-xl max-w-lg leading-relaxed mb-12">
+                                    Especialistas em <strong>sucessão familiar</strong> e <strong>divórcios estratégicos</strong>. Transformamos complexidade jurídica em tranquilidade, com sigilo absoluto e sensibilidade.
+                                </p>
+
+                                <div className="flex items-center gap-6">
+                                    <a href="https://wa.me/5511980289632" className="group flex items-center gap-4 text-gold-light font-body text-xs uppercase tracking-[0.25em] hover:text-gold-rich transition-colors cursor-pointer">
+                                        <span className="w-14 h-14 border border-gold-rich/30 rounded-full flex items-center justify-center group-hover:bg-gold-rich group-hover:text-void transition-all duration-500 shadow-[0_0_15px_rgba(198,168,124,0.1)] group-hover:shadow-[0_0_25px_rgba(198,168,124,0.4)]">
+                                            <IconArrowRight className="transform -rotate-45 group-hover:rotate-0 transition-transform duration-500" size={16} />
+                                        </span>
+                                        Iniciar Atendimento
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className="lg:col-span-5 relative h-[500px] md:h-[650px] w-full flex items-center justify-center lg:justify-end">
+                                <div className="absolute w-[450px] h-[450px] rounded-full border border-gold-rich/5 animate-[spin_30s_linear_infinite]"></div>
+                                <div className="absolute w-[350px] h-[350px] rounded-full border border-gold-rich/10 animate-[spin_20s_linear_infinite_reverse]"></div>
+
+                                <div className={`relative z-10 w-full max-w-md h-[550px] transition-all duration-[1500ms] ease-out delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+                                    <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent z-20 opacity-40"></div>
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=1769&auto=format&fit=crop" 
+                                        alt="Mayara Carpanezi" 
+                                        className="w-full h-full object-cover object-top arch-mask shadow-2xl shadow-gold-rich/5 opacity-90 sepia-[.2] hover:sepia-0 transition-all duration-1000"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            );
+        };
+
+        const Counter = ({ end, suffix = '', duration = 2000 }) => {
+            const [count, setCount] = useState(0);
+            const { elementRef, isVisible } = useIntersectionObserver();
+
+            useEffect(() => {
+                if (!isVisible) return;
+                
+                let start = 0;
+                const increment = end / (duration / 16);
+                
+                const timer = setInterval(() => {
+                start += increment;
+                if (start >= end) {
+                    setCount(end);
+                    clearInterval(timer);
+                } else {
+                    setCount(Math.floor(start));
+                }
+                }, 16);
+
+                return () => clearInterval(timer);
+            }, [isVisible, end, duration]);
+
+            return <span ref={elementRef}>{count}{suffix}</span>;
+        };
+
+        const Stats = () => {
+            return (
+                <section className="border-y border-gold-rich/10 bg-paper py-16 relative overflow-hidden">
+                    <div className="container mx-auto px-6 md:px-12">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gold-rich/10">
+                            <div>
+                                <p className="font-display text-3xl md:text-4xl text-gradient-gold mb-2 font-normal">
+                                    <Counter end={500} suffix="+" />
+                                </p>
+                                <p className="font-body text-[9px] uppercase tracking-[0.2em] text-gold-rich">Famílias Protegidas</p>
+                            </div>
+                            <div>
+                                <p className="font-display text-3xl md:text-4xl text-gradient-gold mb-2 font-normal">
+                                    <Counter end={10} /> Anos
+                                </p>
+                                <p className="font-body text-[9px] uppercase tracking-[0.2em] text-gold-rich">De Excelência</p>
+                            </div>
+                            <div>
+                                <p className="font-display text-3xl md:text-4xl text-gradient-gold mb-2 font-normal">
+                                    <Counter end={98} suffix="%" />
+                                </p>
+                                <p className="font-body text-[9px] uppercase tracking-[0.2em] text-gold-rich">Resolução Extrajudicial</p>
+                            </div>
+                            <div>
+                                <p className="font-display text-3xl md:text-4xl text-gradient-gold mb-2 font-normal">Digital</p>
+                                <p className="font-body text-[9px] uppercase tracking-[0.2em] text-gold-rich">Atendimento Global</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const ServiceItem = ({ number, title, description, delay }) => {
+            const { elementRef, isVisible } = useIntersectionObserver();
+
+            return (
+                <div 
+                    ref={elementRef}
+                    className={`group border-b border-gold-rich/10 cursor-pointer py-12 relative transition-all duration-1000 ${
+                        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    }`}
+                    style={{ transitionDelay: `${delay}ms` }}
+                >
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-8">
+                            <span className="font-display text-gold-rich/30 text-xl italic font-serif">{number}</span>
+                            <h3 className="font-display text-2xl md:text-3xl text-gold-light/90 group-hover:text-gold-rich transition-colors font-normal">
+                                {title}
+                            </h3>
+                        </div>
+                        <div className="w-10 h-10 rounded-full border border-gold-rich/20 flex items-center justify-center group-hover:bg-gold-rich group-hover:border-gold-rich transition-all duration-300">
+                            <IconArrowRight className="text-gold-rich text-sm transform -rotate-45 group-hover:rotate-0 group-hover:text-void transition-all duration-300" size={14} />
+                        </div>
+                    </div>
+                    <div className="overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-700 ease-in-out">
+                        <p className="mt-6 text-subtle font-light max-w-2xl leading-relaxed pl-12 text-sm md:text-base">
+                            {description}
+                        </p>
+                    </div>
+                </div>
+            )
+        }
+
+        const Expertise = () => {
+            const { elementRef, isVisible } = useIntersectionObserver();
+
+            return (
+                <section id="expertise" className="py-32 bg-void relative">
+                    <div className="container mx-auto px-6 md:px-12">
+                        <div 
+                            ref={elementRef}
+                            className={`flex flex-col md:flex-row justify-between items-end mb-24 transition-all duration-1000 ${
+                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                            }`}
+                        >
+                            <h2 className="font-display text-4xl md:text-5xl text-gold-light font-normal">Atuação Especializada</h2>
+                            <p className="font-body text-gold-rich text-xs tracking-[0.2em] uppercase mt-4 md:mt-0 border-b border-gold-rich/20 pb-1">
+                                Foco em Resultado
+                            </p>
+                        </div>
+
+                        <div className="border-t border-gold-rich/10">
+                            <ServiceItem 
+                                number="I" 
+                                title="Divórcio Estratégico" 
+                                description="Condução de separações focando na blindagem de ativos e valuation de empresas familiares. Priorizamos a elegância da resolução e a discrição total."
+                                delay={0}
+                            />
+                            <ServiceItem 
+                                number="II" 
+                                title="Inventário Ágil" 
+                                description="Desbloqueamos bens travados com rapidez através da via Extrajudicial (Cartório). Transformamos burocracia em legado líquido para os herdeiros."
+                                delay={100}
+                            />
+                            <ServiceItem 
+                                number="III" 
+                                title="Planejamento Sucessório" 
+                                description="Arquitetura jurídica para reduzir impostos e evitar conflitos futuros. Holdings Familiares e Testamentos desenhados sob medida para a sua história."
+                                delay={200}
+                            />
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const Step = ({ number, title, subtitle, description, delay }) => {
+            const { elementRef, isVisible } = useIntersectionObserver();
+
+            return (
+                <div 
+                    ref={elementRef}
+                    className={`relative group text-center transition-all duration-1000 ${
+                        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    }`}
+                    style={{ transitionDelay: `${delay}ms` }}
+                >
+                    <div className="w-20 h-20 mx-auto bg-paper border border-gold-rich/20 rounded-full flex items-center justify-center mb-8 relative z-10 group-hover:scale-110 group-hover:border-gold-rich transition-all duration-500 shadow-xl shadow-void">
+                        <span className="font-display text-2xl text-gold-light">{number}</span>
+                    </div>
+                    <h3 className="font-display text-2xl text-gold-light mb-2 font-normal">{title}</h3>
+                    <p className="text-gold-rich text-[9px] uppercase tracking-[0.2em] mb-4">{subtitle}</p>
+                    <p className="text-subtle font-light leading-relaxed text-sm px-4">
+                        {description}
+                    </p>
+                </div>
+            )
+        }
+
+        const Protocol = () => {
+            const { elementRef, isVisible } = useIntersectionObserver();
+
+            return (
+                <section id="protocolo" className="py-32 bg-paper border-t border-gold-rich/10 relative">
+                    <div className="container mx-auto px-6 md:px-12">
+                        <div 
+                            ref={elementRef}
+                            className={`mb-24 text-center transition-all duration-1000 ${
+                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                            }`}
+                        >
+                            <span className="text-gold-rich font-display italic text-lg block mb-2">O Caminho</span>
+                            <h2 className="font-display text-4xl md:text-5xl text-gold-light font-normal">Nosso Protocolo</h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
+                            {/* Connecting Line */}
+                            <div className="hidden md:block absolute top-10 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold-rich/20 to-transparent"></div>
+
+                            <Step 
+                                number="1"
+                                title="Diagnóstico"
+                                subtitle="Imersão & Escuta"
+                                description="Reunião de acolhimento para entender as nuances familiares e análise profunda da documentação."
+                                delay={0}
+                            />
+                            <Step 
+                                number="2"
+                                title="Estratégia"
+                                subtitle="Design Jurídico"
+                                description="Definição do caminho mais suave e seguro, elaboração das minutas e peças processuais."
+                                delay={200}
+                            />
+                            <Step 
+                                number="3"
+                                title="Resolução"
+                                subtitle="Execução & Paz"
+                                description="Acompanhamento integral até a assinatura da escritura ou sentença final. O fim da burocracia."
+                                delay={400}
+                            />
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const About = () => {
+            const { elementRef, isVisible } = useIntersectionObserver();
+
+            return (
+                <section id="legado" className="py-32 bg-void relative overflow-hidden">
+                    <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                        
+                        <div 
+                            ref={elementRef}
+                            className={`relative group cursor-pointer transition-all duration-1000 ${
+                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                            }`}
+                        >
+                            <div className="w-full h-[600px] relative z-10 arch-mask overflow-hidden shadow-2xl shadow-gold-rich/10 border border-gold-rich/10">
+                                <div className="absolute inset-0 bg-void/20 transition-opacity duration-700 group-hover:opacity-0 z-10"></div>
+                                <img 
+                                    src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1770&auto=format&fit=crop" 
+                                    alt="Mayara Carpanezi Video" 
+                                    className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2000ms]"
+                                />
+                            </div>
+                            <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+                                <div className="w-24 h-24 rounded-full bg-white/5 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                                    <IconPlay className="text-gold-light ml-1 fill-gold-light" size={24} />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div 
+                            className={`transition-all duration-1000 delay-300 ${
+                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                            }`}
+                        >
+                            <span className="text-gold-rich font-display italic text-xl mb-4 block">A Especialista</span>
+                            <h2 className="font-display text-5xl text-gold-light mb-8 font-normal leading-tight">Mayara Carpanezi</h2>
+                            
+                            <div className="space-y-6 text-subtle font-light text-lg leading-loose">
+                                <p>
+                                    "Minha advocacia não é sobre vencer a outra parte, é sobre <span className="text-gold-light italic">conquistar o futuro</span> da sua família."
+                                </p>
+                                <p>
+                                    Atuando com o conceito de <strong>Legal Boutique</strong>, Mayara limita intencionalmente seu volume de casos para garantir profundidade intelectual, empatia e dedicação artesanal a cada história que protege.
+                                </p>
+                            </div>
+                            
+                            <div className="mt-10 pt-10 border-t border-gold-rich/10 flex items-center gap-4 text-sm text-gold-rich/80 font-light tracking-wide">
+                                <IconMapPin size={16} />
+                                <span>São Paulo, SP (Atendimento Global Online)</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const FAQItem = ({ question, answer }) => {
+            const [isOpen, setIsOpen] = useState(false);
+
+            return (
+                <div 
+                    className={`bg-void/50 border border-gold-rich/10 rounded-2xl p-8 cursor-pointer hover:border-gold-rich/30 transition-all duration-300 ${isOpen ? 'bg-void' : ''}`}
+                    onClick={() => setIsOpen(!isOpen)}
+                >
+                    <div className="flex justify-between items-center">
+                        <h3 className="font-display text-lg text-gold-light/90">{question}</h3>
+                        <div className={`w-8 h-8 rounded-full bg-gold-rich/10 flex items-center justify-center transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>
+                            <IconPlus className="text-gold-rich" size={12} />
+                        </div>
+                    </div>
+                    <div 
+                        className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-48 opacity-100 pt-6' : 'max-h-0 opacity-0'}`}
+                    >
+                        <p className="text-subtle font-light leading-relaxed">
+                            {answer}
+                        </p>
+                    </div>
+                </div>
+            );
+        };
+
+        const FAQ = () => {
+            const { elementRef, isVisible } = useIntersectionObserver();
+
+            return (
+                <section id="insights" className="py-32 bg-paper relative">
+                    <div className="container mx-auto px-6 md:px-12 max-w-3xl">
+                        <div 
+                            ref={elementRef}
+                            className={`mb-20 text-center transition-all duration-1000 ${
+                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                            }`}
+                        >
+                            <h2 className="font-display text-4xl text-gold-light mb-4 font-normal">Dúvidas Frequentes</h2>
+                            <p className="text-gold-rich text-xs tracking-[0.2em] uppercase">Clareza gera tranquilidade</p>
+                        </div>
+
+                        <div className="space-y-6">
+                            <FAQItem 
+                                question="O divórcio pode ser totalmente online?"
+                                answer="Sim. Atualmente, prezamos pelo conforto e agilidade. A maioria dos casos (especialmente os consensuais) é realizada de forma 100% digital, inclusive a assinatura da escritura. Gerenciamos toda a burocracia para que você não precise sair de casa."
+                            />
+                            <FAQItem 
+                                question="Quanto tempo demora um Inventário?"
+                                answer="Pela via Extrajudicial (em cartório), que é nossa especialidade, resolvemos em média entre 2 a 4 meses. Nosso foco é transformar burocracia em legado líquido o mais rápido possível."
+                            />
+                            <FAQItem 
+                                question="Quais documentos preciso organizar?"
+                                answer="Para a análise inicial, tenha em mãos: Certidão de Casamento/Nascimento atualizada, documentos dos bens (Matrículas de imóveis, CRLV) e documentos pessoais. Não se preocupe se faltar algo, nossa equipe auxilia na busca."
+                            />
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const Footer = () => {
+            const { elementRef, isVisible } = useIntersectionObserver();
+
+            return (
+                <React.Fragment>
+                    <section className="py-32 relative flex items-center justify-center bg-void overflow-hidden">
+                        <div className="absolute inset-0 bg-paper opacity-50"></div>
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-rich/5 rounded-full blur-[100px]"></div>
+
+                        <div 
+                            ref={elementRef}
+                            className={`text-center z-10 px-6 relative transition-all duration-1000 ${
+                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                            }`}
+                        >
+                            <h2 className="font-display text-4xl md:text-6xl text-gold-light mb-8 font-normal">Pronta para resolver?</h2>
+                            <p className="font-body text-subtle font-light max-w-xl mx-auto mb-12 text-lg">
+                                Discrição absoluta. Estratégia personalizada. Acolhimento humano.
+                            </p>
+                            <a href="https://wa.me/5511980289632" className="inline-block px-12 py-5 bg-gold-rich hover:bg-white text-void font-body font-bold text-xs uppercase tracking-[0.2em] transition-all duration-500 rounded-full hover:scale-105 shadow-[0_0_30px_rgba(198,168,124,0.2)]">
+                                Solicitar Diagnóstico
+                            </a>
+                        </div>
+                    </section>
+
+                    <footer className="bg-paper border-t border-gold-rich/10 pt-20 pb-10 text-subtle font-body font-light text-sm">
+                        <div className="container mx-auto px-6 md:px-12">
+                            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+                                <div className="md:col-span-4">
+                                    <h3 className="font-display text-2xl text-gold-light mb-6">CARPANEZI.</h3>
+                                    <p className="max-w-xs leading-loose text-gray-500">Advocacia Privada especializada em gestão de crises familiares e proteção de legado.</p>
+                                </div>
+                                <div className="md:col-span-2 md:col-start-7">
+                                    <h4 className="text-gold-light uppercase tracking-widest text-[10px] mb-6">Escritório</h4>
+                                    <p className="mb-2">R. Rodovalho Junior, 252</p>
+                                    <p className="mb-2">Penha de França, SP</p>
+                                </div>
+                                <div className="md:col-span-2">
+                                    <h4 className="text-gold-light uppercase tracking-widest text-[10px] mb-6">Contato</h4>
+                                    <p className="mb-2">11 98028-9632</p>
+                                    <p>atendimento@mayaracarpanezi.com.br</p>
+                                </div>
+                                <div className="md:col-span-2">
+                                    <h4 className="text-gold-light uppercase tracking-widest text-[10px] mb-6">Social</h4>
+                                    <div className="flex space-x-4">
+                                        <a href="#" className="hover:text-gold-rich transition-colors">Instagram</a>
+                                        <a href="#" className="hover:text-gold-rich transition-colors">LinkedIn</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex flex-col md:flex-row justify-between items-center border-t border-gold-rich/5 pt-10 text-[10px] uppercase tracking-widest text-gray-600">
+                                <p>&copy; 2025 Mayara Carpanezi. Todos os direitos reservados.</p>
+                                <div className="space-x-8 mt-4 md:mt-0">
+                                    <a href="#" className="hover:text-gold-rich transition-colors">Privacidade</a>
+                                    <a href="#" className="hover:text-gold-rich transition-colors">Termos</a>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </React.Fragment>
+            );
+        };
+
+        const App = () => {
+            return (
+                <main className="w-full bg-void text-gold-light font-body selection:bg-gold-rich selection:text-void scroll-smooth">
+                    <div className="fixed inset-0 z-50 pointer-events-none mix-blend-overlay bg-noise opacity-30"></div>
+                    <Navbar />
+                    <Hero />
+                    <Stats />
+                    <Expertise />
+                    <Protocol />
+                    <About />
+                    <FAQ />
+                    <Footer />
+                </main>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

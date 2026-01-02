@@ -19,9 +19,9 @@
                         void: '#0F0F0F',
                         paper: '#161616',
                         gold: {
-                            light: '#F3E5D0', /* Champagne light */
-                            base: '#D4AF37',  /* Classic gold */
-                            rich: '#C6A87C',  /* Muted sophisticated gold */
+                            light: '#F3E5D0',
+                            base: '#D4AF37',
+                            rich: '#C6A87C',
                             dark: '#8E7550',
                         },
                         subtle: '#A3A3A3',
@@ -57,10 +57,7 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <style>
-        body {
-            background-color: #0F0F0F;
-            color: #F3E5D0;
-        }
+        body { background-color: #0F0F0F; color: #F3E5D0; }
         .text-gradient-gold {
             background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
             -webkit-background-clip: text;
@@ -68,16 +65,9 @@
             color: transparent;
             background-size: 200% auto;
         }
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        .arch-mask {
-            border-radius: 300px 300px 0 0;
-        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .arch-mask { border-radius: 300px 300px 0 0; }
     </style>
 </head>
 <body>
@@ -86,7 +76,7 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        // --- ICONS (SVG Components) ---
+        // --- ICONS ---
         const IconMenu = ({ size = 24, className = "" }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
         );
@@ -95,9 +85,6 @@
         );
         const IconArrowRight = ({ size = 24, className = "" }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        );
-        const IconPlay = ({ size = 24, className = "" }) => (
-            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none" className={className}><polygon points="5 3 19 12 5 21 5 3"/></svg>
         );
         const IconMapPin = ({ size = 24, className = "" }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -108,125 +95,82 @@
         const IconStar = ({ size = 24, className = "" }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className={className}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         );
+        
+        // ÍCONE WHATSAPP OFICIAL REFORMULADO
+        const IconWhatsApp = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+        );
+        
+        const IconInstagram = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        );
 
         // --- HOOKS ---
-        const useIntersectionObserver = (options = { threshold: 0.1, rootMargin: '0px' }) => {
+        const useIntersectionObserver = (options = { threshold: 0.1 }) => {
             const elementRef = useRef(null);
             const [isVisible, setIsVisible] = useState(false);
-
             useEffect(() => {
                 const observer = new IntersectionObserver(([entry]) => {
                     if (entry.isIntersecting) {
                         setIsVisible(true);
-                        if (elementRef.current) {
-                            observer.unobserve(elementRef.current);
-                        }
+                        if (elementRef.current) observer.unobserve(elementRef.current);
                     }
                 }, options);
-
-                if (elementRef.current) {
-                    observer.observe(elementRef.current);
-                }
-
-                return () => {
-                    if (elementRef.current) {
-                        observer.unobserve(elementRef.current);
-                    }
-                };
+                if (elementRef.current) observer.observe(elementRef.current);
+                return () => observer.disconnect();
             }, [options]);
-
             return { elementRef, isVisible };
         };
 
         // --- COMPONENTS ---
+        const Counter = ({ end, suffix = '', duration = 2000 }) => {
+            const [count, setCount] = useState(0);
+            const { elementRef, isVisible } = useIntersectionObserver();
+            useEffect(() => {
+                if (!isVisible) return;
+                let start = 0;
+                const increment = end / (duration / 16);
+                const timer = setInterval(() => {
+                    start += increment;
+                    if (start >= end) { setCount(end); clearInterval(timer); }
+                    else { setCount(Math.floor(start)); }
+                }, 16);
+                return () => clearInterval(timer);
+            }, [isVisible, end, duration]);
+            return <span ref={elementRef}>{count}{suffix}</span>;
+        };
 
         const Navbar = () => {
             const [isScrolled, setIsScrolled] = useState(false);
             const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
             useEffect(() => {
-                const handleScroll = () => {
-                    setIsScrolled(window.scrollY > 50);
-                };
+                const handleScroll = () => setIsScrolled(window.scrollY > 50);
                 window.addEventListener('scroll', handleScroll);
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
-            const navClasses = `fixed top-0 w-full z-50 transition-all duration-700 ${
-                isScrolled 
-                ? 'bg-void/80 backdrop-blur-md py-4 shadow-lg shadow-black/10' 
-                : 'py-8 bg-transparent'
-            }`;
-
             return (
                 <React.Fragment>
-                <nav className={navClasses}>
+                <nav className={`fixed top-0 w-full z-50 transition-all duration-700 ${isScrolled ? 'bg-void/80 backdrop-blur-md py-4 shadow-lg' : 'py-8 bg-transparent'}`}>
                     <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-                    <div className="flex items-center gap-4">
-                        <a href="#" className="font-display text-xl tracking-[0.2em] font-medium text-gold-light hover:text-white transition-colors">
-                        CARPANEZI.
-                        </a>
-                    </div>
-
-                    <div className="hidden md:flex items-center space-x-12 font-body text-[11px] font-medium tracking-[0.25em] uppercase text-gold-light/70">
-                        <a href="#expertise" className="hover:text-white transition-colors duration-300 relative group">
-                        Atuação
-                        <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-rich transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-                        <a href="#diferenciais" className="hover:text-white transition-colors duration-300 relative group">
-                        Diferenciais
-                        <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-rich transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-                        <a href="#protocolo" className="hover:text-white transition-colors duration-300 relative group">
-                        Método
-                        <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-rich transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-                        <a href="#legado" className="hover:text-white transition-colors duration-300 relative group">
-                        Sobre
-                        <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-rich transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-                    </div>
-
-                    <a 
-                        href="https://wa.me/5511980289632" 
-                        className="hidden md:block border border-gold-rich/30 px-8 py-3 rounded-full font-body text-[10px] uppercase tracking-[0.25em] text-gold-rich hover:bg-gold-rich hover:text-void transition-all duration-500 hover:scale-105"
-                    >
-                        Contato Privado
-                    </a>
-
-                    <button 
-                        className="md:hidden text-gold-rich"
-                        onClick={() => setIsMobileMenuOpen(true)}
-                    >
-                        <IconMenu size={24} />
-                    </button>
+                        <a href="#" className="font-display text-xl tracking-[0.2em] font-medium text-gold-light">CARPANEZI ADVOGADOS</a>
+                        <div className="hidden md:flex items-center space-x-12 font-body text-[11px] font-medium tracking-[0.25em] uppercase text-gold-light/70">
+                            <a href="#expertise" className="hover:text-white transition-colors relative group">Atuação<span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-rich transition-all duration-300 group-hover:w-full"></span></a>
+                            <a href="#diferenciais" className="hover:text-white transition-colors relative group">Diferenciais<span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-rich transition-all duration-300 group-hover:w-full"></span></a>
+                            <a href="#protocolo" className="hover:text-white transition-colors relative group">Método<span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-rich transition-all duration-300 group-hover:w-full"></span></a>
+                            <a href="#legado" className="hover:text-white transition-colors relative group">Sobre<span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-rich transition-all duration-300 group-hover:w-full"></span></a>
+                        </div>
+                        <a href="https://wa.me/5511984270587" className="hidden md:block border border-gold-rich/30 px-8 py-3 rounded-full font-body text-[10px] uppercase tracking-[0.25em] text-gold-rich hover:bg-gold-rich hover:text-void transition-all">Iniciar Atendimento</a>
+                        <button className="md:hidden text-gold-rich" onClick={() => setIsMobileMenuOpen(true)}><IconMenu size={24} /></button>
                     </div>
                 </nav>
-
-                <div 
-                    className={`fixed inset-0 bg-void/95 backdrop-blur-xl z-[60] flex flex-col items-center justify-center space-y-10 transition-all duration-500 ${
-                    isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-                    }`}
-                >
-                    <button 
-                    className="absolute top-8 right-8 text-gold-rich"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                    <IconX size={32} />
-                    </button>
-
-                    <a href="#expertise" onClick={() => setIsMobileMenuOpen(false)} className="font-display text-3xl text-gold-light">Atuação</a>
-                    <a href="#diferenciais" onClick={() => setIsMobileMenuOpen(false)} className="font-display text-3xl text-gold-light">Diferenciais</a>
-                    <a href="#protocolo" onClick={() => setIsMobileMenuOpen(false)} className="font-display text-3xl text-gold-light">Método</a>
-                    <a href="#legado" onClick={() => setIsMobileMenuOpen(false)} className="font-display text-3xl text-gold-light">Sobre</a>
-                    
-                    <a 
-                    href="https://wa.me/5511980289632" 
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="font-body text-void bg-gold-rich px-10 py-4 rounded-full uppercase tracking-widest text-xs mt-8"
-                    >
-                    Agendar
-                    </a>
+                <div className={`fixed inset-0 bg-void/95 backdrop-blur-xl z-[60] flex flex-col items-center justify-center space-y-10 transition-all duration-500 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                    <button className="absolute top-8 right-8 text-gold-rich" onClick={() => setIsMobileMenuOpen(false)}><IconX size={32} /></button>
+                    <a href="#expertise" onClick={() => setIsMobileMenuOpen(false)} className="font-display text-3xl">Atuação</a>
+                    <a href="#legado" onClick={() => setIsMobileMenuOpen(false)} className="font-display text-3xl">Sobre</a>
+                    <a href="https://wa.me/5511980289632" onClick={() => setIsMobileMenuOpen(false)} className="font-body text-void bg-gold-rich px-10 py-4 rounded-full uppercase tracking-widest text-xs mt-8">Iniciar Atendimento</a>
                 </div>
                 </React.Fragment>
             );
@@ -234,66 +178,26 @@
 
         const Hero = () => {
             const { elementRef, isVisible } = useIntersectionObserver();
-
             return (
                 <header className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-void">
                     <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gold-rich/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/2 mix-blend-screen"></div>
                     <div className="absolute top-0 left-0 w-full h-full bg-noise opacity-50 pointer-events-none"></div>
-
-                    <div className="container mx-auto px-6 md:px-12 relative z-10">
-                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-                            
-                            <div 
-                                ref={elementRef}
-                                className={`lg:col-span-7 flex flex-col justify-center transition-all duration-1000 ${
-                                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                                }`}
-                            >
-                                <div className="mb-8 flex items-center">
-                                    <div className="inline-flex items-center gap-3 px-5 py-2 bg-gold-rich/5 border border-gold-rich/20 rounded-full backdrop-blur-sm">
-                                        <span className="relative flex h-2 w-2">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-rich opacity-50"></span>
-                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-gold-rich"></span>
-                                        </span>
-                                        <span className="font-body text-[10px] uppercase tracking-[0.2em] text-gold-rich/90">
-                                            Agenda: <span className="text-gold-light font-medium">3 Vagas Dezembro</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                
-                                <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.15] text-gold-light mb-10 font-normal">
-                                    Protegemos seu <br />
-                                    <span className="italic text-gradient-gold animate-shimmer">Legado</span> e seu <br />
-                                    Futuro.
-                                </h1>
-                                
-                                <div className={`h-px bg-gradient-to-r from-gold-rich/60 to-transparent mb-10 transition-all duration-[2000ms] delay-500 ease-out ${isVisible ? 'w-full' : 'w-0'}`}></div>
-                                
-                                <p className="font-body text-subtle font-light text-lg md:text-xl max-w-lg leading-relaxed mb-12">
-                                    Especialistas em <strong>sucessão familiar</strong> e <strong>divórcios estratégicos</strong>. Transformamos complexidade jurídica em tranquilidade, com sigilo absoluto e sensibilidade.
-                                </p>
-
-                                <div className="flex items-center gap-6">
-                                    <a href="https://wa.me/5511980289632" className="group flex items-center gap-4 text-gold-light font-body text-xs uppercase tracking-[0.25em] hover:text-gold-rich transition-colors cursor-pointer">
-                                        <span className="w-14 h-14 border border-gold-rich/30 rounded-full flex items-center justify-center group-hover:bg-gold-rich group-hover:text-void transition-all duration-500 shadow-[0_0_15px_rgba(198,168,124,0.1)] group-hover:shadow-[0_0_25px_rgba(198,168,124,0.4)]">
-                                            <IconArrowRight className="transform -rotate-45 group-hover:rotate-0 transition-transform duration-500" size={16} />
-                                        </span>
-                                        Iniciar Atendimento
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div className="lg:col-span-5 relative h-[500px] md:h-[650px] w-full flex items-center justify-center lg:justify-end">
-                                <div className="absolute w-[450px] h-[450px] rounded-full border border-gold-rich/5 animate-[spin_30s_linear_infinite]"></div>
-                                <div className="absolute w-[350px] h-[350px] rounded-full border border-gold-rich/10 animate-[spin_20s_linear_infinite_reverse]"></div>
-
-                                <div className={`relative z-10 w-full max-w-md h-[550px] transition-all duration-[1500ms] ease-out delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-                                    <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent z-20 opacity-60"></div>
-                                    <img src="foto1.jpg" 
-                                        alt="Mayara Carpanezi" 
-                                        className="w-full h-full object-cover object-top arch-mask shadow-[0_0_50px_rgba(198,168,124,0.15)] ring-1 ring-white/10"
-                                    />
-                                </div>
+                    <div className="container mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                        <div ref={elementRef} className={`lg:col-span-7 flex flex-col justify-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.15] text-gold-light mb-10 font-normal">Protegemos seu <br /><span className="italic text-gradient-gold animate-shimmer">Legado</span> e seu <br />Futuro.</h1>
+                            <div className="h-px bg-gradient-to-r from-gold-rich/60 to-transparent mb-10 w-full"></div>
+                            <p className="font-body text-subtle font-light text-lg md:text-xl max-w-lg leading-relaxed mb-12">Especialistas em <strong>sucessão familiar</strong> e <strong>divórcios estratégicos</strong>. Transformamos complexidade jurídica em tranquilidade, com sigilo absoluto e sensibilidade.</p>
+                            <a href="https://wa.me/5511984270587" className="group flex items-center gap-4 text-gold-light font-body text-xs uppercase tracking-[0.25em] hover:text-gold-rich transition-colors cursor-pointer">
+                                <span className="w-14 h-14 border border-gold-rich/30 rounded-full flex items-center justify-center group-hover:bg-gold-rich group-hover:text-void transition-all duration-500 shadow-lg"><IconArrowRight className="transform -rotate-45 group-hover:rotate-0 transition-transform duration-500" size={16} /></span>
+                                Iniciar Atendimento
+                            </a>
+                        </div>
+                        <div className="lg:col-span-5 relative h-[500px] md:h-[650px] w-full flex items-center justify-center lg:justify-end">
+                            <div className="absolute w-[450px] h-[450px] rounded-full border border-gold-rich/5 animate-[spin_30s_linear_infinite]"></div>
+                            <div className="absolute w-[350px] h-[350px] rounded-full border border-gold-rich/10 animate-[spin_20s_linear_infinite_reverse]"></div>
+                            <div className={`relative z-10 w-full max-w-md h-[550px] transition-all duration-[1500ms] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+                                <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent z-20 opacity-60"></div>
+                                <img src="foto1.jpg" alt="Mayara" className="w-full h-full object-cover object-top arch-mask shadow-2xl ring-1 ring-white/10" />
                             </div>
                         </div>
                     </div>
@@ -301,332 +205,116 @@
             );
         };
 
-        const Counter = ({ end, suffix = '', duration = 2000 }) => {
-            const [count, setCount] = useState(0);
-            const { elementRef, isVisible } = useIntersectionObserver();
-
-            useEffect(() => {
-                if (!isVisible) return;
-                
-                let start = 0;
-                const increment = end / (duration / 16);
-                
-                const timer = setInterval(() => {
-                start += increment;
-                if (start >= end) {
-                    setCount(end);
-                    clearInterval(timer);
-                } else {
-                    setCount(Math.floor(start));
-                }
-                }, 16);
-
-                return () => clearInterval(timer);
-            }, [isVisible, end, duration]);
-
-            return <span ref={elementRef}>{count}{suffix}</span>;
-        };
-
-        const Stats = () => {
-            return (
-                <section className="border-y border-gold-rich/10 bg-paper py-16 relative overflow-hidden">
-                    <div className="container mx-auto px-6 md:px-12">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gold-rich/10">
-                            <div>
-                                <p className="font-display text-3xl md:text-4xl text-gradient-gold mb-2 font-normal">
-                                    <Counter end={500} suffix="+" />
-                                </p>
-                                <p className="font-body text-[9px] uppercase tracking-[0.2em] text-gold-rich">Famílias Protegidas</p>
-                            </div>
-                            <div>
-                                <p className="font-display text-3xl md:text-4xl text-gradient-gold mb-2 font-normal">
-                                    <Counter end={10} /> Anos
-                                </p>
-                                <p className="font-body text-[9px] uppercase tracking-[0.2em] text-gold-rich">De Excelência</p>
-                            </div>
-                            <div>
-                                <p className="font-display text-3xl md:text-4xl text-gradient-gold mb-2 font-normal">
-                                    <Counter end={98} suffix="%" />
-                                </p>
-                                <p className="font-body text-[9px] uppercase tracking-[0.2em] text-gold-rich">Resolução Extrajudicial</p>
-                            </div>
-                            <div>
-                                <p className="font-display text-3xl md:text-4xl text-gradient-gold mb-2 font-normal">Digital</p>
-                                <p className="font-body text-[9px] uppercase tracking-[0.2em] text-gold-rich">Atendimento Global</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            );
-        };
+        const Stats = () => (
+            <section className="border-y border-gold-rich/10 bg-paper py-16 relative overflow-hidden">
+                <div className="container mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gold-rich/10">
+                    <div><p className="font-display text-3xl md:text-4xl text-gradient-gold mb-2 font-normal"><Counter end={500} suffix="+" /></p><p className="font-body text-[9px] uppercase tracking-[0.2em] text-gold-rich">Famílias Protegidas</p></div>
+                    <div><p className="font-display text-3xl md:text-4xl text-gradient-gold mb-2 font-normal"><Counter end={10} /> Anos</p><p className="font-body text-[9px] uppercase tracking-[0.2em] text-gold-rich">De Excelência</p></div>
+                    <div><p className="font-display text-3xl md:text-4xl text-gradient-gold mb-2 font-normal"><Counter end={98} suffix="%" /></p><p className="font-body text-[9px] uppercase tracking-[0.2em] text-gold-rich">Resolução Extrajudicial</p></div>
+                    <div><p className="font-display text-3xl md:text-4xl text-gradient-gold mb-2 font-normal">Digital</p><p className="font-body text-[9px] uppercase tracking-[0.2em] text-gold-rich">Atendimento Global</p></div>
+                </div>
+            </section>
+        );
 
         const ServiceItem = ({ number, title, description, delay }) => {
             const { elementRef, isVisible } = useIntersectionObserver();
-
             return (
-                <div 
-                    ref={elementRef}
-                    className={`group border-b border-gold-rich/10 cursor-pointer py-12 relative transition-all duration-1000 ${
-                        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                    }`}
-                    style={{ transitionDelay: `${delay}ms` }}
-                >
+                <div ref={elementRef} className={`group border-b border-gold-rich/10 cursor-pointer py-12 relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${delay}ms` }}>
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-8">
                             <span className="font-display text-gold-rich/30 text-xl italic font-serif">{number}</span>
-                            <h3 className="font-display text-xl md:text-3xl text-gold-light/90 group-hover:text-gold-rich transition-colors font-normal">
-                                {title}
-                            </h3>
+                            <h3 className="font-display text-xl md:text-3xl text-gold-light/90 group-hover:text-gold-rich transition-colors font-normal">{title}</h3>
                         </div>
-                        <div className="w-10 h-10 rounded-full border border-gold-rich/20 flex items-center justify-center group-hover:bg-gold-rich group-hover:border-gold-rich transition-all duration-300 flex-shrink-0 ml-4">
-                            <IconArrowRight className="text-gold-rich text-sm transform -rotate-45 group-hover:rotate-0 group-hover:text-void transition-all duration-300" size={14} />
-                        </div>
+                        <div className="w-10 h-10 rounded-full border border-gold-rich/20 flex items-center justify-center group-hover:bg-gold-rich transition-all duration-300 flex-shrink-0 ml-4"><IconArrowRight className="text-gold-rich transform -rotate-45" size={14} /></div>
                     </div>
-                    <div className="overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-700 ease-in-out">
-                        <p className="mt-6 text-subtle font-light max-w-2xl leading-relaxed pl-12 text-sm md:text-base">
-                            {description}
-                        </p>
-                    </div>
+                    <div className="overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-700 ease-in-out"><p className="mt-6 text-subtle font-light max-w-2xl leading-relaxed pl-12 text-sm md:text-base">{description}</p></div>
                 </div>
             )
         }
 
-        const Expertise = () => {
-            const { elementRef, isVisible } = useIntersectionObserver();
-
-            return (
-                <section id="expertise" className="py-32 bg-void relative">
-                    <div className="container mx-auto px-6 md:px-12">
-                        <div 
-                            ref={elementRef}
-                            className={`flex flex-col md:flex-row justify-between items-end mb-24 transition-all duration-1000 ${
-                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                            }`}
-                        >
-                            <h2 className="font-display text-4xl md:text-5xl text-gold-light font-normal">Atuação Especializada</h2>
-                            <p className="font-body text-gold-rich text-xs tracking-[0.2em] uppercase mt-4 md:mt-0 border-b border-gold-rich/20 pb-1">
-                                Foco em Resultado
-                            </p>
-                        </div>
-
-                        <div className="border-t border-gold-rich/10">
-                            <ServiceItem 
-                                number="I" 
-                                title="Divórcio e Dissolução de União Estável" 
-                                description="Apoio jurídico para que a separação ocorra com serenidade, garantindo todos os direitos envolvidos e evitando conflitos desnecessários."
-                                delay={0}
-                            />
-                            <ServiceItem 
-                                number="II" 
-                                title="Pensão Alimentícia" 
-                                description="Atuação em pedidos, revisões ou cobranças, sempre com foco no bem-estar de quem depende do valor para viver com dignidade."
-                                delay={100}
-                            />
-                            <ServiceItem 
-                                number="III" 
-                                title="Guarda, Visitas e Convivência Familiar" 
-                                description="Construção de acordos equilibrados que priorizam o melhor interesse das crianças e fortalecem vínculos familiares."
-                                delay={200}
-                            />
-                             <ServiceItem 
-                                number="IV" 
-                                title="Inventário e Partilha de Bens" 
-                                description="Acompanhamento completo para organizar documentos, mediar decisões e finalizar o processo com responsabilidade e agilidade."
-                                delay={300}
-                            />
-                        </div>
+        const Expertise = () => (
+            <section id="expertise" className="py-32 bg-void relative">
+                <div className="container mx-auto px-6 md:px-12">
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-24"><h2 className="font-display text-4xl md:text-5xl text-gold-light font-normal">Atuação Especializada</h2><p className="font-body text-gold-rich text-xs tracking-[0.2em] uppercase mt-4 md:mt-0 border-b border-gold-rich/20 pb-1">Foco em Resultado</p></div>
+                    <div className="border-t border-gold-rich/10">
+                        <ServiceItem number="I" title="Divórcio e Dissolução de União Estável" description="Apoio jurídico para que a separação ocorra com serenidade, garantindo todos os direitos envolvidos e evitando conflitos desnecessários." delay={0} />
+                        <ServiceItem number="II" title="Pensão Alimentícia" description="Atuação em pedidos, revisões ou cobranças, sempre com foco no bem-estar de quem depende do valor para viver com dignidade." delay={100} />
+                        <ServiceItem number="III" title="Guarda, Visitas e Convivência Familiar" description="Construção de acordos equilibrados que priorizam o melhor interesse das crianças e fortalecem vínculos familiares." delay={200} />
+                        <ServiceItem number="IV" title="Inventário e Partilha de Bens" description="Acompanhamento completo para organizar documentos, mediar decisões e finalizar o processo com responsabilidade e agilidade." delay={300} />
                     </div>
-                </section>
-            );
-        };
-
-        const DifferentialItem = ({ title, description, delay }) => {
-            const { elementRef, isVisible } = useIntersectionObserver();
-            return (
-                 <div 
-                    ref={elementRef}
-                    className={`p-8 border border-gold-rich/10 bg-void/50 hover:bg-void hover:border-gold-rich/30 transition-all duration-500 rounded-lg group ${
-                        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                    }`}
-                    style={{ transitionDelay: `${delay}ms` }}
-                >
-                    <div className="mb-6 text-gold-rich opacity-70 group-hover:opacity-100 transition-opacity">
-                        <IconStar size={24} />
-                    </div>
-                    <h3 className="font-display text-xl text-gold-light mb-4">{title}</h3>
-                    <p className="text-subtle font-light text-sm leading-relaxed">
-                        {description}
-                    </p>
                 </div>
-            )
-        }
+            </section>
+        );
 
-        const Differentials = () => {
-             const { elementRef, isVisible } = useIntersectionObserver();
-
-             return (
-                <section id="diferenciais" className="py-24 bg-paper relative border-y border-gold-rich/5">
-                    <div className="container mx-auto px-6 md:px-12">
-                         <div 
-                            ref={elementRef}
-                            className={`mb-16 text-center transition-all duration-1000 ${
-                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                            }`}
-                        >
-                            <h2 className="font-display text-4xl text-gold-light font-normal mb-4">Diferenciais</h2>
-                            <p className="text-gold-rich text-xs tracking-[0.2em] uppercase">Por que nos escolher</p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <DifferentialItem 
-                                title="Experiência Comprovada" 
-                                description="Anos de dedicação ao Direito de Família, garantindo estratégias eficazes diante de situações emocionais e patrimoniais complexas."
-                                delay={0}
-                            />
-                            <DifferentialItem 
-                                title="Atendimento Humano" 
-                                description="Cuidado genuíno com cada cliente. Aqui, você encontra acolhimento, escuta e suporte durante todo o processo."
-                                delay={100}
-                            />
-                            <DifferentialItem 
-                                title="Sigilo Absoluto" 
-                                description="Cada detalhe do seu caso é tratado com discrição e confidencialidade, oferecendo a confiança necessária para enfrentar decisões difíceis."
-                                delay={200}
-                            />
-                            <DifferentialItem 
-                                title="Foco em Resultados" 
-                                description="Mais que procedimentos jurídicos, a missão é entregar soluções reais que protegem direitos e transformam vidas com ética."
-                                delay={300}
-                            />
-                        </div>
+        const Differentials = () => (
+            <section id="diferenciais" className="py-24 bg-paper relative border-y border-gold-rich/5">
+                <div className="container mx-auto px-6 md:px-12">
+                    <div className="mb-16 text-center"><h2 className="font-display text-4xl text-gold-light font-normal mb-4">Diferenciais</h2><p className="text-gold-rich text-xs tracking-[0.2em] uppercase">Por que nos escolher</p></div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {[
+                            {t: "Experiência Comprovada", d: "Anos de dedicação ao Direito de Família, garantindo estratégias eficazes diante de situações emocionais e patrimoniais complexas."},
+                            {t: "Atendimento Humano", d: "Cuidado genuíno com cada cliente. Aqui, você encontra acolhimento, escuta e suporte durante todo o processo."},
+                            {t: "Sigilo Absoluto", d: "Cada detalhe do seu caso é tratado com discrição e confidencialidade, oferecendo a confiança necessária para enfrentar decisões difíceis."},
+                            {t: "Foco em Resultados", d: "Mais que procedimentos jurídicos, a missão é entregar soluções reais que protegem direitos e transformam vidas com ética."}
+                        ].map((item, i) => (
+                            <div key={i} className="p-8 border border-gold-rich/10 bg-void/50 hover:bg-void hover:border-gold-rich/30 transition-all duration-500 rounded-lg group">
+                                <div className="mb-6 text-gold-rich opacity-70 group-hover:opacity-100 transition-opacity"><IconStar size={24} /></div>
+                                <h3 className="font-display text-xl text-gold-light mb-4">{item.t}</h3>
+                                <p className="text-subtle text-sm leading-relaxed">{item.d}</p>
+                            </div>
+                        ))}
                     </div>
-                </section>
-             )
-        }
-
-        const Step = ({ number, title, subtitle, description, delay }) => {
-            const { elementRef, isVisible } = useIntersectionObserver();
-
-            return (
-                <div 
-                    ref={elementRef}
-                    className={`relative group text-center transition-all duration-1000 ${
-                        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                    }`}
-                    style={{ transitionDelay: `${delay}ms` }}
-                >
-                    <div className="w-20 h-20 mx-auto bg-paper border border-gold-rich/20 rounded-full flex items-center justify-center mb-8 relative z-10 group-hover:scale-110 group-hover:border-gold-rich transition-all duration-500 shadow-xl shadow-void">
-                        <span className="font-display text-2xl text-gold-light">{number}</span>
-                    </div>
-                    <h3 className="font-display text-2xl text-gold-light mb-2 font-normal">{title}</h3>
-                    <p className="text-gold-rich text-[9px] uppercase tracking-[0.2em] mb-4">{subtitle}</p>
-                    <p className="text-subtle font-light leading-relaxed text-sm px-4">
-                        {description}
-                    </p>
                 </div>
-            )
-        }
+            </section>
+        );
 
-        const Protocol = () => {
-            const { elementRef, isVisible } = useIntersectionObserver();
-
-            return (
-                <section id="protocolo" className="py-32 bg-void relative">
-                    <div className="container mx-auto px-6 md:px-12">
-                        <div 
-                            ref={elementRef}
-                            className={`mb-24 text-center transition-all duration-1000 ${
-                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                            }`}
-                        >
-                            <span className="text-gold-rich font-display italic text-lg block mb-2">O Caminho</span>
-                            <h2 className="font-display text-4xl md:text-5xl text-gold-light font-normal">Nosso Protocolo</h2>
+        const Protocol = () => (
+            <section id="protocolo" className="py-32 bg-void relative">
+                <div className="container mx-auto px-6 md:px-12 text-center mb-24"><span className="text-gold-rich font-display italic text-lg block mb-2">O Caminho</span><h2 className="font-display text-4xl md:text-5xl text-gold-light font-normal">Nosso protocolo</h2></div>
+                <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-16 relative">
+                    <div className="hidden md:block absolute top-10 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold-rich/20 to-transparent"></div>
+                    {[
+                        {n:"1", t:"Diagnóstico", s:"Imersão & Escuta", d:"Reunião de acolhimento para entender as nuances familiares e análise profunda da documentação."},
+                        {n:"2", t:"Estratégia", s:"Design Jurídico", d:"Definição do caminho mais suave e seguro, elaboração das minutas e peças processuais."},
+                        {n:"3", t:"Resolução", s:"Execução & Paz", d:"Acompanhamento integral até a assinatura da escritura ou sentença final. O fim da burocracia."}
+                    ].map((step, i) => (
+                        <div key={i} className="relative group text-center">
+                            <div className="w-20 h-20 mx-auto bg-paper border border-gold-rich/20 rounded-full flex items-center justify-center mb-8 relative z-10 group-hover:scale-110 group-hover:border-gold-rich transition-all duration-500 shadow-xl shadow-void"><span className="font-display text-2xl text-gold-light">{step.n}</span></div>
+                            <h3 className="font-display text-2xl text-gold-light mb-2 font-normal">{step.t}</h3>
+                            <p className="text-gold-rich text-[9px] uppercase tracking-[0.2em] mb-4">{step.s}</p>
+                            <p className="text-subtle font-light leading-relaxed text-sm px-4">{step.d}</p>
                         </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
-                            {/* Connecting Line */}
-                            <div className="hidden md:block absolute top-10 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold-rich/20 to-transparent"></div>
-
-                            <Step 
-                                number="1"
-                                title="Diagnóstico"
-                                subtitle="Imersão & Escuta"
-                                description="Reunião de acolhimento para entender as nuances familiares e análise profunda da documentação."
-                                delay={0}
-                            />
-                            <Step 
-                                number="2"
-                                title="Estratégia"
-                                subtitle="Design Jurídico"
-                                description="Definição do caminho mais suave e seguro, elaboração das minutas e peças processuais."
-                                delay={200}
-                            />
-                            <Step 
-                                number="3"
-                                title="Resolução"
-                                subtitle="Execução & Paz"
-                                description="Acompanhamento integral até a assinatura da escritura ou sentença final. O fim da burocracia."
-                                delay={400}
-                            />
-                        </div>
-                    </div>
-                </section>
-            );
-        };
+                    ))}
+                </div>
+            </section>
+        );
 
         const About = () => {
             const { elementRef, isVisible } = useIntersectionObserver();
-
             return (
                 <section id="legado" className="py-32 bg-paper relative overflow-hidden">
-                    <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                        
-                        <div 
-                            ref={elementRef}
-                            className={`relative group cursor-pointer transition-all duration-1000 ${
-                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                            }`}
-                        >
-                            <div className="w-full h-[600px] relative z-10 arch-mask overflow-hidden shadow-2xl shadow-gold-rich/10 border border-gold-rich/10">
-                                <div className="absolute inset-0 bg-void/20 transition-opacity duration-700 group-hover:opacity-0 z-10"></div>
-                                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1770&auto=format&fit=crop" 
-                                    alt="Mayara Carpanezi Video" 
-                                    className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2000ms]"
-                                />
+                    <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+                        <div ref={elementRef} className={`lg:col-span-5 relative group transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                            <div className="w-full aspect-[9/16] relative z-10 rounded-lg overflow-hidden shadow-2xl border border-gold-rich/10 bg-void">
+                                <video src="video.mp4" controls autoPlay muted loop playsInline className="w-full h-full object-cover" />
                             </div>
-                            <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-                                <div className="w-24 h-24 rounded-full bg-white/5 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                                    <IconPlay className="text-gold-light ml-1 fill-gold-light" size={24} />
-                                </div>
+                            <div className="mt-8 flex justify-center">
+                                <a href="https://wa.me/5511984270587" className="w-full text-center py-4 bg-gold-rich text-void font-body font-bold text-xs uppercase tracking-widest rounded-full hover:bg-white transition-all shadow-lg">Iniciar Atendimento</a>
                             </div>
                         </div>
 
-                        <div 
-                            className={`transition-all duration-1000 delay-300 ${
-                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                            }`}
-                        >
+                        <div className={`lg:col-span-7 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                             <span className="text-gold-rich font-display italic text-xl mb-4 block">A Especialista</span>
                             <h2 className="font-display text-5xl text-gold-light mb-8 font-normal leading-tight">Mayara Carpanezi</h2>
-                            
                             <div className="space-y-6 text-subtle font-light text-lg leading-relaxed">
-                                <p>
-                                    Sou a <span className="text-gold-light font-medium">Dra. Mayara Carpanezi</span>, advogada especialista em Direito de Família e Sucessões. Atuo com seriedade, sensibilidade e estratégia para oferecer soluções jurídicas que realmente façam a diferença na vida das pessoas.
-                                </p>
-                                <p>
-                                    Cada caso traz consigo uma história única. Por isso, meu atendimento é individualizado e acolhedor, sempre com foco no que você precisa e no que é melhor para sua família. Aqui, você encontra apoio para tomar decisões importantes com mais segurança — e nunca se sente sozinho(a) no processo.
-                                </p>
-                                <p>
-                                    Discrição, respeito e transparência são pilares do meu trabalho. Tudo é conduzido com sigilo absoluto, garantindo a proteção da sua privacidade em momentos que exigem cuidado redobrado.
-                                </p>
-                                <p className="italic text-gold-rich/90">
-                                    Se você busca uma profissional que una experiência, empatia e comprometimento com resultados, estou pronta para ajudar. Agende uma conversa. Será um prazer ouvir sua história e caminhar ao seu lado na construção de um novo capítulo.
-                                </p>
+                                <p>Sou a <span className="text-gold-light font-medium">Dra. Mayara Carpanezi</span>, advogada especialista em Direito de Família e Sucessões. Atuo com seriedade, sensibilidade e estratégia para oferecer soluções jurídicas que realmente façam a diferença na vida das pessoas.</p>
+                                <p>Cada caso traz consigo uma história única. Por isso, meu atendimento é individualizado e acolhedor, sempre com foco no que você precisa e no que é melhor para sua família. Aqui, você encontra apoio para tomar decisões importantes com mais segurança — e nunca se sente sozinho(a) no processo.</p>
+                                <p>Discrição, respeito e transparência são pilares do meu trabalho. Tudo é conduzido com sigilo absoluto, garantindo a proteção da sua privacidade em momentos que exigem cuidado redobrado.</p>
+                                <p className="italic text-gold-rich/90">Se você busca uma profissional que una experiência, empatia e comprometimento com resultados, estou pronta para ajudar. Agende uma conversa. Será um prazer ouvir sua história e caminhar ao seu lado na construção de um novo capítulo.</p>
                             </div>
-                            
                             <div className="mt-10 pt-10 border-t border-gold-rich/10 flex items-center gap-4 text-sm text-gold-rich/80 font-light tracking-wide">
                                 <IconMapPin size={16} />
-                                <span>São Paulo, SP (Atendimento Global Online)</span>
+                                <span>R. Itapura, 239 - Sala 309 - Tatuapé, São Paulo - SP - 03310-000 </span>
                             </div>
                         </div>
                     </div>
@@ -636,182 +324,77 @@
 
         const FAQItem = ({ question, answer }) => {
             const [isOpen, setIsOpen] = useState(false);
-
             return (
-                <div 
-                    className={`bg-void/50 border border-gold-rich/10 rounded-2xl p-8 cursor-pointer hover:border-gold-rich/30 transition-all duration-300 ${isOpen ? 'bg-void' : ''}`}
-                    onClick={() => setIsOpen(!isOpen)}
-                >
-                    <div className="flex justify-between items-center">
-                        <h3 className="font-display text-lg text-gold-light/90">{question}</h3>
-                        <div className={`w-8 h-8 rounded-full bg-gold-rich/10 flex items-center justify-center transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>
-                            <IconPlus className="text-gold-rich" size={12} />
-                        </div>
-                    </div>
-                    <div 
-                        className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100 pt-6' : 'max-h-0 opacity-0'}`}
-                    >
-                        <div className="text-subtle font-light leading-relaxed text-sm md:text-base">
-                            {answer}
-                        </div>
-                    </div>
+                <div className={`bg-void/50 border border-gold-rich/10 rounded-2xl p-8 cursor-pointer hover:border-gold-rich/30 transition-all duration-300 ${isOpen ? 'bg-void' : ''}`} onClick={() => setIsOpen(!isOpen)}>
+                    <div className="flex justify-between items-center"><h3 className="font-display text-lg text-gold-light/90">{question}</h3><div className={`transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}><IconPlus className="text-gold-rich" size={12} /></div></div>
+                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100 pt-6' : 'max-h-0 opacity-0'}`}><div className="text-subtle font-light leading-relaxed text-sm md:text-base">{answer}</div></div>
                 </div>
             );
         };
 
-        const FAQ = () => {
-            const { elementRef, isVisible } = useIntersectionObserver();
-
-            return (
-                <section id="insights" className="py-32 bg-paper/50 relative">
-                    <div className="container mx-auto px-6 md:px-12 max-w-4xl">
-                        <div 
-                            ref={elementRef}
-                            className={`mb-20 text-center transition-all duration-1000 ${
-                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                            }`}
-                        >
-                            <h2 className="font-display text-4xl text-gold-light mb-4 font-normal">Dúvidas Frequentes</h2>
-                            <p className="text-gold-rich text-xs tracking-[0.2em] uppercase">Clareza gera tranquilidade</p>
-                        </div>
-
-                        <div className="space-y-6">
-                            <FAQItem 
-                                question="Documentos Necessários para o Divórcio"
-                                answer={
-                                    <>
-                                        <p className="mb-4">Para dar início ao processo, é fundamental reunir alguns documentos essenciais:</p>
-                                        <ul className="list-disc pl-5 space-y-2 mb-4 text-gold-rich/80">
-                                            <li>Certidão de casamento atualizada;</li>
-                                            <li>Pacto antenupcial (se houver);</li>
-                                            <li>Certidões de nascimento dos filhos;</li>
-                                            <li>Documentos dos bens do casal.</li>
-                                        </ul>
-                                        <p>Cada modalidade de divórcio pode exigir documentos específicos, e nosso time está pronto para orientar você em cada detalhe.</p>
-                                    </>
-                                }
-                            />
-                            <FAQItem 
-                                question="Divórcio em Cartório: Rápido e Descomplicado"
-                                answer={
-                                    <>
-                                        <p className="mb-4">O divórcio extrajudicial é a opção ideal para casais que desejam agilidade. Ele é realizado diretamente em cartório, desde que:</p>
-                                        <ul className="list-disc pl-5 space-y-2 mb-4 text-gold-rich/80">
-                                            <li>Seja amigável ou consensual;</li>
-                                            <li>O casal não tenha filhos menores ou incapazes;</li>
-                                            <li>Não haja gravidez em curso.</li>
-                                        </ul>
-                                        <p className="mb-2">É obrigatória a assistência de um advogado, que pode representar ambos ou cada um separadamente.</p>
-                                        <p className="italic text-xs text-gold-rich">Importante: filhos menores emancipados não são considerados incapazes.</p>
-                                    </>
-                                }
-                            />
-                            <FAQItem 
-                                question="Como é Definido o Valor da Pensião Alimentícia?"
-                                answer={
-                                    <>
-                                        <p className="mb-4">O valor da pensão é determinado com base no princípio do trinômio:</p>
-                                        <ul className="list-disc pl-5 space-y-2 mb-4 text-gold-rich/80">
-                                            <li><strong>Necessidade</strong> de quem recebe;</li>
-                                            <li><strong>Possibilidade</strong> de quem paga;</li>
-                                            <li><strong>Razoabilidade</strong> para manter o equilíbrio entre as partes.</li>
-                                        </ul>
-                                        <p>Esse valor pode ser acordado entre as partes ou fixado por um juiz. Nossa equipe está pronta para ajudar você a definir o melhor cenário para o seu caso.</p>
-                                    </>
-                                }
-                            />
-                            <FAQItem 
-                                question="Precisa Alterar Seu Nome Após o Divórcio?"
-                                answer="A mudança de nome após o divórcio é opcional. Você pode escolher manter ou remover o sobrenome do ex-cônjuge, de acordo com sua preferência."
-                            />
-                        </div>
-
-                        {/* CTA Box Extra */}
-                        
+        const FAQ = () => (
+            <section id="insights" className="py-32 bg-paper/50 relative">
+                <div className="container mx-auto px-6 md:px-12 max-w-4xl">
+                    <div className="mb-20 text-center"><h2 className="font-display text-4xl text-gold-light mb-4 font-normal">Dúvidas Frequentes</h2><p className="text-gold-rich text-xs tracking-[0.2em] uppercase">Clareza gera tranquilidade</p></div>
+                    <div className="space-y-6">
+                        <FAQItem question="Documentos Necessários para o Divórcio" answer={<React.Fragment><p className="mb-4">Para dar início ao processo, é fundamental reunir alguns documentos essenciais:</p><ul className="list-disc pl-5 space-y-2 mb-4 text-gold-rich/80"><li>Certidão de casamento atualizada;</li><li>Pacto antenupcial (se houver);</li><li>Certidões de nascimento dos filhos;</li><li>Documentos dos bens do casal.</li></ul><p>Cada modalidade de divórcio pode exigir documentos específicos, e nosso time está pronto para orientar você em cada detalhe.</p></React.Fragment>} />
+                        <FAQItem question="Divórcio em Cartório: Rápido e Descomplicado" answer={<React.Fragment><p className="mb-4">O divórcio extrajudicial é a opção ideal para casais que desejam agilidade. Ele é realizado diretamente em cartório, desde que:</p><ul className="list-disc pl-5 space-y-2 mb-4 text-gold-rich/80"><li>Seja amigável ou consensual;</li><li>O casal não tenha filhos menores ou incapazes;</li><li>Não haja gravidez em curso.</li></ul><p className="mb-2">É obrigatória a assistência de um advogado, que pode representar ambos ou cada um separadamente.</p><p className="italic text-xs text-gold-rich">Importante: filhos menores emancipados não são considerados incapazes.</p></React.Fragment>} />
+                        <FAQItem question="Como é Definido o Valor da Pensião Alimentícia?" answer={<React.Fragment><p className="mb-4">O valor da pensão é determinado com base no princípio do trinômio:</p><ul className="list-disc pl-5 space-y-2 mb-4 text-gold-rich/80"><li><strong>Necessidade</strong> de quem recebe;</li><li><strong>Possibilidade</strong> de quem paga;</li><li><strong>Razoabilidade</strong> para manter o equilíbrio entre as partes.</li></ul><p>Esse valor pode ser acordado entre as partes ou fixado por um juiz. Nossa equipe está pronto para ajudar você a definir o melhor cenário para o seu caso.</p></React.Fragment>} />
+                        <FAQItem question="Precisa Alterar Seu Nome Após o Divórcio?" answer="A mudança de nome após o divórcio é opcional. Você pode escolher manter ou remover o sobrenome do ex-cônjuge, de acordo com sua preferência." />
                     </div>
+                </div>
+            </section>
+        );
+
+        const Footer = () => (
+            <React.Fragment>
+                <section className="py-32 relative flex items-center justify-center bg-void overflow-hidden">
+                    <div className="absolute inset-0 bg-paper opacity-50"></div>
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-rich/5 rounded-full blur-[100px]"></div>
+                    <div className="text-center z-10 px-6 relative transition-all duration-1000 opacity-100"><h2 className="font-display text-4xl md:text-6xl text-gold-light mb-8 font-normal">Pronto para resolver?</h2><p className="font-body text-subtle font-light max-w-xl mx-auto mb-12 text-lg">Discrição absoluta. Estratégia personalizada. Acolhimento humano.</p><a href="https://wa.me/5511984270587" className="inline-block px-12 py-5 bg-gold-rich hover:bg-white text-void font-body font-bold text-xs uppercase tracking-[0.2em] transition-all duration-500 rounded-full hover:scale-105 shadow-lg">Iniciar Atendimento</a></div>
                 </section>
-            );
-        };
-
-        const Footer = () => {
-            const { elementRef, isVisible } = useIntersectionObserver();
-
-            return (
-                <React.Fragment>
-                    <section className="py-32 relative flex items-center justify-center bg-void overflow-hidden">
-                        <div className="absolute inset-0 bg-paper opacity-50"></div>
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-rich/5 rounded-full blur-[100px]"></div>
-
-                        <div 
-                            ref={elementRef}
-                            className={`text-center z-10 px-6 relative transition-all duration-1000 ${
-                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                            }`}
-                        >
-                            <h2 className="font-display text-4xl md:text-6xl text-gold-light mb-8 font-normal">Pronta para resolver?</h2>
-                            <p className="font-body text-subtle font-light max-w-xl mx-auto mb-12 text-lg">
-                                Discrição absoluta. Estratégia personalizada. Acolhimento humano.
-                            </p>
-                            <a href="https://wa.me/5511980289632" className="inline-block px-12 py-5 bg-gold-rich hover:bg-white text-void font-body font-bold text-xs uppercase tracking-[0.2em] transition-all duration-500 rounded-full hover:scale-105 shadow-[0_0_30px_rgba(198,168,124,0.2)]">
-                                Solicitar Diagnóstico
-                            </a>
-                        </div>
-                    </section>
-
-                    <footer className="bg-paper border-t border-gold-rich/10 pt-20 pb-10 text-subtle font-body font-light text-sm">
-                        <div className="container mx-auto px-6 md:px-12">
-                            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
-                                <div className="md:col-span-4">
-                                    <h3 className="font-display text-2xl text-gold-light mb-6">CARPANEZI.</h3>
-                                    <p className="max-w-xs leading-loose text-gray-500">Advocacia Privada especializada em gestão de crises familiares e proteção de legado.</p>
-                                </div>
-                                <div className="md:col-span-2 md:col-start-7">
-                                    <h4 className="text-gold-light uppercase tracking-widest text-[10px] mb-6">Escritório</h4>
-                                    <p className="mb-2">R. Rodovalho Junior, 252</p>
-                                    <p className="mb-2">Penha de França, SP</p>
-                                </div>
-                                <div className="md:col-span-2">
-                                    <h4 className="text-gold-light uppercase tracking-widest text-[10px] mb-6">Contato</h4>
-                                    <p className="mb-2">11 98028-9632</p>
-                                    <p>atendimento@mayaracarpanezi.com.br</p>
-                                </div>
-                                <div className="md:col-span-2">
-                                    <h4 className="text-gold-light uppercase tracking-widest text-[10px] mb-6">Social</h4>
-                                    <div className="flex space-x-4">
-                                        <a href="#" className="hover:text-gold-rich transition-colors">Instagram</a>
-                                        <a href="#" className="hover:text-gold-rich transition-colors">LinkedIn</a>
+                <footer className="bg-paper border-t border-gold-rich/10 pt-20 pb-10 text-subtle font-body font-light text-sm">
+                    <div className="container mx-auto px-6 md:px-12">
+                        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+                            <div className="md:col-span-4"><h3 className="font-display text-2xl text-gold-light mb-6 uppercase">Carpanezi Advogados</h3><p className="max-w-xs leading-loose text-gray-500">Advocacia Privada especializada em gestão de crises familiares e proteção de legado.</p></div>
+                            <div className="md:col-span-4 md:col-start-6">
+                                <h4 className="text-gold-light uppercase tracking-widest text-[10px] mb-6">Escritório</h4>
+                                <p className="mb-2"> R. Itapura, 239 - Sala 309 - Tatuapé </p>
+                                <p>São Paulo - SP, 03310-000</p>
+                            </div>
+                            <div className="md:col-span-3">
+                                <h4 className="text-gold-light uppercase tracking-widest text-[10px] mb-6">Contato</h4>
+                                <div className="space-y-4">
+                                    <div className="flex items-center gap-4">
+                                        <a href="https://wa.me/5511984270587" target="_blank" className="bg-gold-rich/10 p-2 rounded-full text-gold-rich hover:bg-gold-rich hover:text-void transition-all duration-300" title="WhatsApp">
+                                            <IconWhatsApp size={22} />
+                                        </a>
+                                        <a href="https://www.instagram.com/mayaracarpanezi.adv/" target="_blank" className="bg-gold-rich/10 p-2 rounded-full text-gold-rich hover:bg-gold-rich hover:text-void transition-all duration-300" title="Instagram">
+                                            <IconInstagram size={22} />
+                                        </a>
+                                        
                                     </div>
-                                </div>
-                            </div>
-                            <div className="flex flex-col md:flex-row justify-between items-center border-t border-gold-rich/5 pt-10 text-[10px] uppercase tracking-widest text-gray-600">
-                                <p>&copy; 2025 Mayara Carpanezi. Todos os direitos reservados.</p>
-                                <div className="space-x-8 mt-4 md:mt-0">
-                                    <a href="#" className="hover:text-gold-rich transition-colors">Privacidade</a>
-                                    <a href="#" className="hover:text-gold-rich transition-colors">Termos</a>
+                                    <p>
+                                        <a href="mailto:atendimento@mayaracarpanezi.com.br" className="text-gold-rich hover:text-white transition-colors decoration-gold-rich/30 underline-offset-4 underline">atendimento@mayaracarpanezi.com.br</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                    </footer>
-                </React.Fragment>
-            );
-        };
+                        <div className="flex flex-col md:flex-row justify-between items-center border-t border-gold-rich/5 pt-10 text-[10px] uppercase tracking-widest text-gray-600 flex flex-col md:flex-row justify-between items-center gap-4">
+                            <p>&copy; 2026 Mayara Carpanezi. Todos os direitos reservados.</p>
+                            <div className="flex gap-8"><a href="#" className="hover:text-gold-rich transition-colors">Privacidade</a><a href="#" className="hover:text-gold-rich transition-colors">Termos</a></div>
+                        </div>
+                    </div>
+                </footer>
+            </React.Fragment>
+        );
 
-        const App = () => {
-            return (
-                <main className="w-full bg-void text-gold-light font-body selection:bg-gold-rich selection:text-void scroll-smooth">
-                    <div className="fixed inset-0 z-50 pointer-events-none mix-blend-overlay bg-noise opacity-30"></div>
-                    <Navbar />
-                    <Hero />
-                    <Stats />
-                    <Expertise />
-                    <Differentials />
-                    <Protocol />
-                    <About />
-                    <FAQ />
-                    <Footer />
-                </main>
-            );
-        };
+        const App = () => (
+            <main className="w-full bg-void text-gold-light font-body selection:bg-gold-rich selection:text-void scroll-smooth">
+                <div className="fixed inset-0 z-50 pointer-events-none mix-blend-overlay bg-noise opacity-30"></div>
+                <Navbar /><Hero /><Stats /><Expertise /><Differentials /><Protocol /><About /><FAQ /><Footer />
+            </main>
+        );
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
